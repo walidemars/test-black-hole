@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тайны Чёрных Дыр 🌌</title>
+
+    <style>
+        /* ============================================
+           🎨 ОСНОВНЫЕ ЦВЕТА САЙТА
+           Если хочешь поменять цвета — меняй их здесь!
+           ============================================ */
+        :root {
+            --color-bg-dark: #0b0d2e;       /* самый тёмный цвет фона (глубокий космос) */
+            --color-bg-purple: #2a1a5e;     /* фиолетовый оттенок космоса */
+            --color-accent: #7c5cff;        /* яркий фиолетовый для кнопок и акцентов */
+            --color-text-light: #ffffff;    /* светлый текст */
+            --color-text-muted: #c9c4ff;    /* приглушённый текст */
+            --color-card-bg: rgba(255, 255, 255, 0.08); /* полупрозрачный фон карточек */
+        }
+
+        /* ============================================
+           📦 ОБЩИЕ НАСТРОЙКИ СТРАНИЦЫ
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* чтобы отступы считались правильно */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-purple) 100%);
+            /* 👆 Чтобы сделать фон одним цветом — замени на: background: var(--color-bg-dark); */
+            color: var(--color-text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           ✨ ЗВЁЗДЫ НА ФОНЕ
+           ============================================ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(1px 1px at 40% 70%, white, transparent),
+                radial-gradient(2px 2px at 60% 20%, white, transparent),
+                radial-gradient(1px 1px at 80% 50%, white, transparent),
+                radial-gradient(2px 2px at 10% 80%, white, transparent),
+                radial-gradient(1px 1px at 90% 90%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(2px 2px at 30% 10%, white, transparent);
+            background-size: 300px 300px;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.3; }
+            to   { opacity: 0.8; }
+        }
+
+        /* ============================================
+           🏷️ ШАПКА САЙТА
+           ============================================ */
+        header {
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================
+           🚀 ГЛАВНЫЙ ЭКРАН (HERO)
+           ============================================ */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-emoji {
+            font-size: 6rem; /* 👈 размер главного эмодзи */
+            display: block;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-15px); }
+        }
+
+        .hero h1 {
+            font-size: 3rem; /* 👈 размер главного заголовка */
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff, #c9c4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem; /* 👈 размер описания */
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           💡 БЛОК С ФАКТАМИ (КАРТОЧКИ)
+           ============================================ */
+        .facts {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .facts h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px; /* 👈 расстояние между карточками */
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--color-card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px; /* 👈 закруглённость углов карточки */
+            padding: 30px;       /* 👈 отступы внутри карточки */
+            flex: 1 1 280px;
+            max-width: 340px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(124, 92, 255, 0.3);
+        }
+
+        .card-emoji {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--color-text-light);
+        }
+
+        .card p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+
+        /* ============================================
+           🦶 ПОДВАЛ (FOOTER)
+           ============================================ */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================
+           📱 АДАПТИВНОСТЬ (для телефонов)
+           ============================================ */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p  { font-size: 1rem; }
+            .hero-emoji { font-size: 4rem; }
+            .facts h2 { font-size: 1.6rem; }
+            header { font-size: 1.2rem; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🏷️ ШАПКА САЙТА -->
+    <header>
+        🌌 Тайны Чёрных Дыр
+    </header>
+
+    <!-- 🚀 ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+        <span class="hero-emoji">🕳️</span>
+        <h1>Что такое чёрные дыры?</h1>
+        <p>
+            Чёрная дыра — это место в космосе, где гравитация настолько сильная,
+            что даже свет не может из неё вырваться! Это самые загадочные
+            объекты во всей Вселенной. 🚀✨
+        </p>
+    </section>
+
+    <!-- 💡 БЛОК С ИНТЕРЕСНЫМИ ФАКТАМИ -->
+    <section class="facts">
+        <h2>🌠 Почему это так круто?</h2>
+        <div class="cards">
+
+            <div class="card">
+                <span class="card-emoji">⏰</span>
+                <h3>Замедление времени</h3>
+                <p>
+                    Рядом с чёрной дырой время течёт медленнее! Если бы ты
+                    полетел к ней и вернулся, твои друзья на Земле уже
+                    стали бы взрослыми.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="card-emoji">🍝</span>
+                <h3>Спагеттификация</h3>
+                <p>
+                    Учёные реально используют это слово! Если упасть в чёрную
+                    дыру, гравитация растянет тебя в длинную тонкую нить —
+                    прямо как спагетти!
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="card-emoji">🌟</span>
+                <h3>Сверхмассивные гиганты</h3>
+                <p>
+                    В центре нашей галактики Млечный Путь есть чёрная дыра,
+                    масса которой в 4 миллиона раз больше массы Солнца!
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 🦶 ПОДВАЛ -->
+    <footer>
+        © 2026 Тайны Чёрных Дыр. Сделано с ❤️ для юных астрономов.
+    </footer>
+
+    <!--
+    ═══════════════════════════════════════════════════════
+    📘 ИНСТРУКЦИЯ ДЛЯ ЮНОГО ПРОГРАММИСТА
+    ═══════════════════════════════════════════════════════
+
+    Как открыть этот сайт у себя на компьютере:
+
+    1) Скопируй ВЕСЬ этот код (от <!DOCTYPE html> до </html>).
+    2) Открой на компьютере программу "Блокнот" (Notepad).
+    3) Вставь туда скопированный код.
+    4) Нажми "Файл" → "Сохранить как...".
+    5) В поле "Имя файла" напиши:  index.html
+       ⚠️ Важно: расширение должно быть .html, а не .txt!
+       В поле "Тип файла" выбери "Все файлы".
+    6) Сохрани файл на Рабочий стол.
+    7) Дважды кликни по файлу — он откроется в браузере! 🎉
+
+    💡 Как изменить что-то в коде:
+       • Цвет фона        → ищи в CSS строку  --color-bg-dark
+       • Размер заголовка → ищи  font-size: 3rem
+       • Отступы карточек → ищи  padding: 30px
+       • Текст на сайте   → меняй прямо в HTML между тегами
+
+    Удачи в изучении космоса и программирования! 🚀🌌
+    -->
+
+</body>
+</html>
